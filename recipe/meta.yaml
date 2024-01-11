@@ -10,16 +10,17 @@ source:
   sha256: 5d7c06e027fc8b99238edb0d53d970cf97066ef97654009890b83703849632f9
 
 build:
-  noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - wheel
+    - setuptools
   run:
-    - python >=3.6
+    - python
     - requests
 
 test:
@@ -32,15 +33,17 @@ test:
 
 about:
   home: https://github.com/cjhutto/vaderSentiment
+  dev_url: https://github.com/cjhutto/vaderSentiment
+  doc_url: https://github.com/cjhutto/vaderSentiment
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: 'VADER Sentiment Analysis.'
+  summary: VADER Sentiment Analysis
   description: |
     VADER Sentiment Analysis. VADER (Valence Aware Dictionary and sEntiment Reasoner)
-     is a lexicon and rule-based sentiment analysis tool that is specifically
-     attuned to sentiments expressed in social media, and works well on texts
-      from other domains..
+    is a lexicon and rule-based sentiment analysis tool that is specifically
+    attuned to sentiments expressed in social media, and works well on texts
+    from other domains..
 
 extra:
   recipe-maintainers:
